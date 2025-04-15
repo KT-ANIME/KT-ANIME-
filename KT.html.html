@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="KT Anime">
+  <meta name="keywords" content="Anime,Free">
+  <meta name="author" content="Kaos team">
+  <title>KT ANIME</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #111;
+      color: white;
+    }
+
+    header {
+      background-color: #222;
+      padding: 10px;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 3em;
+      color: #fff;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .anime-card {
+      width: 200px;
+      height: 300px;
+      background-color: #333;
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .anime-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .anime-card:hover {
+      transform: scale(1.05);
+    }
+
+    .anime-card .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .anime-card:hover .overlay {
+      opacity: 1;
+    }
+
+    .overlay h2 {
+      font-size: 1.5em;
+      text-align: center;
+    }
+
+    .anime-card p {
+      padding: 10px;
+      text-align: center;
+    }
+
+    footer {
+      background-color: #222;
+      padding: 10px;
+      text-align: center;
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+    }
+
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>KT ANIME</h1>
+</header>
+
+<div class="container" id="animeContainer">
+  <!-- Anime kártyák itt jelennek meg -->
+</div>
+
+<footer>
+  <p>&copy; 2025 KT ANIME - Minden jog fenntartva.</p>
+</footer>
+
+<script>
+  const animeData = [
+    { title: "Naruto", imageUrl: "https://via.placeholder.com/200x300?text=Naruto", videoUrl: "https://www.example.com/video/naruto" },
+    { title: "One Piece", imageUrl: "https://via.placeholder.com/200x300?text=One+Piece", videoUrl: "https://www.example.com/video/onepiece" },
+    { title: "Attack on Titan", imageUrl: "https://via.placeholder.com/200x300?text=Attack+on+Titan", videoUrl: "https://www.example.com/video/aot" },
+    { title: "My Hero Academia", imageUrl: "https://via.placeholder.com/200x300?text=My+Hero+Academia", videoUrl: "https://www.example.com/video/mha" },
+    { title: "Demon Slayer", imageUrl: "https://via.placeholder.com/200x300?text=Demon+Slayer", videoUrl: "https://www.example.com/video/demonslayer" },
+  ];
+
+  const animeContainer = document.getElementById("animeContainer");
+
+  // Kártyák generálása
+  animeData.forEach(anime => {
+    const animeCard = document.createElement("div");
+    animeCard.classList.add("anime-card");
+
+    animeCard.innerHTML = `
+      <img src="${anime.imageUrl}" alt="${anime.title}">
+      <div class="overlay">
+        <h2>${anime.title}</h2>
+      </div>
+      <p>Kattints a lejátszáshoz</p>
+    `;
+
+    animeCard.addEventListener("click", () => {
+      window.location.href = anime.videoUrl;
+    });
+
+    animeContainer.appendChild(animeCard);
+  });
+</script>
+
+</body>
+</html>
